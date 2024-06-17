@@ -1,0 +1,23 @@
+services:
+  db:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_USER: srtiruna
+      POSTGRES_PASSWORD: srtiruna
+    ports:
+      - 5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  
+  admin:
+    image: dpage/pgadmin4:latest
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: srtiruna@oracle.com
+      PGADMIN_DEFAULT_PASSWORD: srtiruna
+    ports:
+      - 8080:80
+
+volumes:
+  pgdata:
